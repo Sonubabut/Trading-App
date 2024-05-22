@@ -49,7 +49,7 @@ from json2html import *
 
 
 
-os.environ["OPENAI_API_KEY"] = "sk-proj-G866lJRnljfpP85RMl0WT3BlbkFJCnoygrH1QpJx7UEWBHoQ"
+os.environ["OPENAI_API_KEY"] = ""
 
 
 
