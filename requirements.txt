@@ -1,0 +1,14 @@
+flask
+re
+pymongo
+os
+langchain
+wandb
+openai
+json
+IPython
+pydantic 
+typing 
+pydantic 
+typing 
+json2html 

@@ -1,0 +1,33 @@
+body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-image: url('https://cdn.pixabay.com/photo/2023/07/19/08/09/ai-generated-8136384_1280.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .response-container {
+            width: 60%;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+        .response {
+            text-align: left;
+            margin-bottom: 20px;
+        }
+        .response h2 {
+            color: #333;
+        }
+        .response p {
+            margin-bottom: 10px;
+        }
+        .bottom {
+            text-align: center;
+        }

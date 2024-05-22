@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta charset="UTF-8">
+  
+
+    <link rel="apple-touch-icon" type="image/png" href="https://cpwebassets.codepen.io/assets/favicon/apple-touch-icon-5ae1a0698dcc2402e9712f7d01ed509a57814f994c660df9f7a952f3060705ee.png">
+
+    <meta name="apple-mobile-web-app-title" content="CodePen">
+
+    <link rel="shortcut icon" type="image/x-icon" href="https://cpwebassets.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico">
+
+    <link rel="mask-icon" type="image/x-icon" href="https://cpwebassets.codepen.io/assets/favicon/logo-pin-b4b4269c16397ad2f0f7a01bcdf513a1994f4c94b8af2f191c09eb0d601762b1.svg" color="#111">
+
+
+
+  
+  
+
+  <title>CodePen - Layout of AI Form</title>
+
+    <link rel="canonical" href="https://codepen.io/T-sonubabu/pen/BaeKyBB">
+  
+  
+  
+  
+<style>
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9f9;
+}
+
+.container {
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  border-radius: 10px;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #333;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #666;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+button[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  background-color: #4CAF50;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+button[type="submit"]:hover {
+  background-color: #3e8e41;
+}
+
+#msg {
+  color: #red;
+  font-size: 16px;
+  margin-top: 10px;
+}
+</style>
+
+  <script>
+  window.console = window.console || function(t) {};
+</script>
+
+  
+  
+</head>
+
+<body translate="no" style="background-image: url('https://cdn.pixabay.com/photo/2023/07/19/08/09/ai-generated-8136384_1280.jpg'); background-size: cover;">
+  
+
+
+  <meta charset="UTF-8">
+  <title>Input Form</title>
+  <link rel="stylesheet" href="BaeKyBB_data/%7B%7B%20url_for('static',%20filename='style.css')%20%7D%7D">
+  <script>
+    document.getElementById('inputForm').addEventListener('submit', function(event) {
+  event.preventDefault();
+
+  var Trader_Experience = document.getElementById('Trader_Experience').value;
+  var Commodity = document.getElementById('Commodity').value;
+  var Profit_margin = document.getElementById('Profit_margin').value;
+  var Calendar_type = document.getElementById('Calendar_type').value;
+  var Information_source = document.getElementById('Information_source').value;
+  var Activity_type = document.getElementById('Activity_type').value;
+  var Index = document.getElementById('Index').value;
+  var No_trade_day = document.getElementById('No_trade_day').value;
+  var Position_Close_days = document.getElementById('Position_Close_days').value;
+  var Eval_Perf_Day = document.getElementById('Eval_Perf_Day').value;
+  var Trade_Size = document.getElementById('Trade_Size').value;
+  var Position_Size = document.getElementById('Position_Size').value;
+  var Profit_Order = document.getElementById('Profit_Order').value;
+  var Stop_loss_Order = document.getElementById('Stop_loss_Order').value;
+
+  fetch('{{ url_for("loginsecondary") }}', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      Trader_Experience: Trader_Experience,
+      Commodity: Commodity,
+      Profit_margin: Profit_margin,
+      Calendar_type: Calendar_type,
+      Information_source: Information_source,
+      Activity_type: Activity_type,
+      Index: Index,
+      No_trade_day: No_trade_day,
+      Position_Close_days: Position_Close_days,
+      Eval_Perf_Day: Eval_Perf_Day,
+      Trade_Size: Trade_Size,
+      Position_Size: Position_Size,
+      Profit_Order: Profit_Order,
+      Stop_loss_Order: Stop_loss_Order
+    })
+  })
+  .then(response => response.json())
+  .then(data => {
+    if (data.message === 'success') {
+      window.location.href = '{{ url_for("home") }}';
+    } else {
+      document.getElementById('msg').innerText = data.message;
+    }
+  })
+  .catch(error => {
+    console.error('Error:', error);
+  });
+});
+  </script>
+
+
+  <div class="container">
+    <h1>Enter Details</h1>
+    <form id="inputForm" action="{{ url_for('submit') }}" method="post">
+      <div class="form-group">
+        <label for="Trader_Experience">Trader Experience</label>
+        <input type="text" name="Trader_Experience" id="Trader_Experience" required="">
+      </div>
+      <div class="form-group">
+        <label for="Commodity">Commodity</label>
+        <input type="text" name="Commodity" id="Commodity" required="">
+      </div>
+      <div class="form-group">
+        <label for="Profit_margin">Profit margin</label>
+        <input type="text" name="Profit_margin" id="Profit_margin" required="">
+      </div>
+      <div class="form-group">
+        <label for="Calendar_type">Calendar type</label>
+        <input type="text" name="Calendar_type" id="Calendar_type" required="">
+      </div>
+            <div class="form-group">
+        <label for="Information_source">Information source</label>
+        <input type="text" name="Information_source" id="Information_source" required="">
+      </div>
+      <div class="form-group">
+        <label for="Activity_type">Activity type</label>
+        <input type="text" name="Activity_type" id="Activity_type" required="">
+      </div>
+      <div class="form-group">
+        <label for="Index">Index</label>
+        <input type="text" name="Index" id="Index" required="">
+      </div>
+      <div class="form-group">
+        <label for="No_trade_day">No trade day</label>
+        <input type="text" name="No_trade_day" id="No_trade_day" required="">
+      </div>
+      <div class="form-group">
+        <label for="Position_Close_days">Position close days</label>
+        <input type="text" name="Position_Close_days" id="Position_Close_days" required="">
+      </div>
+      <div class="form-group">
+        <label for="Eval_Perf_Day">Eval perf day</label>
+        <input type="text" name="Eval_Perf_Day" id="Eval_Perf_Day" required="">
+      </div>
+      <div class="form-group">
+        <label for="Trade_Size">Trade size</label>
+        <input type="text" name="Trade_Size" id="Trade_Size" required="">
+      </div>
+      <div class="form-group">
+        <label for="Position_Size">Position size</label>
+        <input type="text" name="Position_Size" id="Position_Size" required="">
+      </div>
+      <div class="form-group">
+        <label for="Profit_Order">Profit order</label>
+        <input type="text" name="Profit_Order" id="Profit_Order" required="">
+      </div>
+      <div class="form-group">
+        <label for="Stop_loss_Order">Stop loss order</label>
+        <input type="text" name="Stop_loss_Order" id="Stop_loss_Order" required="">
+      </div>
+      <button type="submit">Submit</button>
+      <p class="bottom">Don't have an account?  <a class="bottom" href="https://cdpn.io/T-sonubabu/fullpage/%7B%7Burl_for('register')%7D%7D"> Sign Up here</a></p>
+      <p id="msg"></p>
+    </form>
+  </div>
+
+
+  
+  
+  
+
+
+
+</body></html>
