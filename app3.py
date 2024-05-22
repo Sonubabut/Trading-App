@@ -49,7 +49,7 @@ from json2html import *
 
 
 
-os.environ["OPENAI_API_KEY"] = ""
+os.environ["OPENAI_API_KEY"] = "sk-proj-G866lJRnljfpP85RMl0WT3BlbkFJCnoygrH1QpJx7UEWBHoQ"
 
 
 
@@ -57,7 +57,7 @@ os.environ["OPENAI_API_KEY"] = ""
 app = Flask(__name__)
 CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
-app.config["SECRET_KEY"] = ""
+app.config["SECRET_KEY"] = "a79caf691396e3b295ffe17221aba707d996d6b6"
 connection_string = "mongodb+srv://arkin:WaeDq68DMHUW8Vw@cluster0.ttzz7fc.mongodb.net/?retryWrites=true&w=majority"
 
 
